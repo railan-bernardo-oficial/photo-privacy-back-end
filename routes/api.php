@@ -28,7 +28,7 @@ Route::group([
     Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('delete');
 });
 
-// users
+// posts
 Route::group([
     'middleware' => ['api', 'auth:api'],
     'prefix' => 'post'
@@ -38,3 +38,9 @@ Route::group([
     Route::put('/post/{id}', [PostController::class, 'update'])->name('update');
 });
 
+//posts
+Route::group([
+    'prefix' => 'posts'
+], function ($router) {
+    Route::get('/list-posts', [PostController::class, 'homePosts'])->name('posts');
+});

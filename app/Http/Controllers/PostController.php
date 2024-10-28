@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function homePosts(){
+        $posts = Post::take(4)->get();
+
+        return ApiResponse::success("posts", $posts->all());
+    }
+
     public function create(Request $request){
         $post = new Post();
 
